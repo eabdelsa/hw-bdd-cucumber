@@ -12,6 +12,10 @@ end
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
 
+Then /^the director of "([^"]*)" should be "([^"]*)"$/ do |arg1, arg2|
+   assert page.body =~ /#{arg1}.+Director.+#{arg2}/m
+end
+
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
@@ -35,8 +39,8 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   
 end
 
-Then /I should see all the movies/ do
+
+Then /I should see all of the movies/ do
   rows = page.all('#movies tr').size - 1
-  assert rows == Movie.count()
-  
+  expect(rows).to eq Movie.count()
 end

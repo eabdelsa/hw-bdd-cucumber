@@ -43,7 +43,7 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   And I should not see "Chicken Run"
   
 
-
+#Senario for desplaying movies with all ratings
 Scenario: all ratings selected
   # see assignment
   When I check the following ratings: PG, R, PG-13, NC-17, G
